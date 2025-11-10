@@ -1,0 +1,202 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recordatorios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h2>Nuevo recordatorio</h2>
+
+  <form #f="ngForm" (ngSubmit)="guardarRecordatorio(f)">
+    <ion-list>
+
+      <!-- Mascota asociada -->
+      <ion-item>
+        <ion-label position="stacked">Mascota</ion-label>
+        <ion-select
+          name="mascotaId"
+          [(ngModel)]="nuevoRecordatorio.mascotaId">
+          <ion-select-option
+            *ngFor="let m of mascotas"
+            [value]="m.id">
+            {{ m.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Título *</ion-label>
+        <ion-input
+          type="text"
+          name="titulo"
+          required
+          [(ngModel)]="nuevoRecordatorio.titulo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Tipo *</ion-label>
+        <ion-input
+          type="text"
+          name="tipo"
+          required
+          placeholder="Vacuna, Baño, Comida..."
+          [(ngModel)]="nuevoRecordatorio.tipo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha *</ion-label>
+        <ion-input
+          type="date"
+          name="fecha"
+          required
+          [(ngModel)]="nuevoRecordatorio.fecha">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Hora *</ion-label>
+        <ion-input
+          type="time"
+          name="hora"
+          required
+          [(ngModel)]="nuevoRecordatorio.hora">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Recurrencia</ion-label>
+        <ion-select
+          name="recurrencia"
+          [(ngModel)]="nuevoRecordatorio.recurrencia">
+          <ion-select-option value="Única vez">Única vez</ion-select-option>
+          <ion-select-option value="Diario">Diario</ion-select-option>
+          <ion-select-option value="Semanal">Semanal</ion-select-option>
+          <ion-select-option value="Mensual">Mensual</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Notas</ion-label>
+        <ion-textarea
+          name="notas"
+          [(ngModel)]="nuevoRecordatorio.notas">
+        </ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="f.invalid">
+      Guardar recordatorio
+    </ion-button>
+  </form>
+
+  <div style="margin: 16px 0; border-bottom: 1px solid #ccc;"></div>
+
+  <h2>Recordatorios creados</h2>
+
+  <!-- BUSCADOR Y FILTROS -->
+  <ion-searchbar
+    placeholder="Buscar por título, tipo o mascota"
+    (ionInput)="onBuscar($event.detail.value || '')">
+  </ion-searchbar>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px 0;">
+    <ion-button
+      size="small"
+      fill="outline"
+      [color]="filtroEstado === 'TODOS' ? 'primary' : 'medium'"
+      (click)="onCambiarFiltroEstado('TODOS')">
+      Todos
+    </ion-button>
+
+    <ion-button
+      size="small"
+      fill="outline"
+      [color]="filtroEstado === 'HOY' ? 'primary' : 'medium'"
+      (click)="onCambiarFiltroEstado('HOY')">
+      Hoy
+    </ion-button>
+
+    <ion-button
+      size="small"
+      fill="outline"
+      [color]="filtroEstado === 'PROXIMO' ? 'primary' : 'medium'"
+      (click)="onCambiarFiltroEstado('PROXIMO')">
+      Próximos
+    </ion-button>
+
+    <ion-button
+      size="small"
+      fill="outline"
+      [color]="filtroEstado === 'VENCIDO' ? 'primary' : 'medium'"
+      (click)="onCambiarFiltroEstado('VENCIDO')">
+      Vencidos
+    </ion-button>
+  </div>
+
+  <ion-list *ngIf="recordatoriosFiltrados.length > 0; else sinRecordatorios">
+    <ion-item *ngFor="let r of recordatoriosFiltrados">
+      <ion-label>
+        <h2>{{ r.titulo }}</h2>
+        <p>
+          {{ obtenerNombreMascota(r.mascotaId) || 'Sin mascota asociada' }}
+          • {{ r.tipo }} • {{ r.fecha }} {{ r.hora }}
+        </p>
+        <p>
+          Recurrencia: {{ r.recurrencia || 'Única vez' }}
+        </p>
+        <p *ngIf="r.notas">
+          {{ r.notas }}
+        </p>
+
+        <!-- ESTADO DEL RECORDATORIO -->
+        <p *ngIf="!r.completado && obtenerEstadoRecordatorio(r) === 'HOY'"
+           style="color: #1e88e5; font-weight: 500;">
+          Estado: Hoy
+        </p>
+
+        <p *ngIf="!r.completado && obtenerEstadoRecordatorio(r) === 'PROXIMO'"
+           style="color: #00796b; font-weight: 500;">
+          Estado: Próximo
+        </p>
+
+        <p *ngIf="!r.completado && obtenerEstadoRecordatorio(r) === 'VENCIDO'"
+           style="color: #e53935; font-weight: 500;">
+          Estado: Vencido
+        </p>
+
+        <p *ngIf="r.completado" style="color: green; font-weight: 500;">
+          ✔ Completado y registrado en historial
+        </p>
+      </ion-label>
+
+      <ion-button
+        slot="end"
+        color="success"
+        fill="outline"
+        *ngIf="!r.completado"
+        (click)="marcarComoCompletado(r)">
+        Marcar completado
+      </ion-button>
+
+      <ion-button
+        slot="end"
+        color="danger"
+        fill="outline"
+        (click)="eliminarRecordatorio(r.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinRecordatorios>
+    <p>No tienes recordatorios creados todavía.</p>
+  </ng-template>
+
+</ion-content>

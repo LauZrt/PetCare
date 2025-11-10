@@ -1,0 +1,78 @@
+:host {
+  ion-content {
+    --padding-top: 12px;
+  }
+}
+
+.mascotas-wrapper {
+  padding: 16px;
+}
+
+.mascotas-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.mascotas-header ion-button {
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+
+/* Card/listado de mascotas */
+.mascotas-list ion-item {
+  --min-height: 72px;
+}
+
+.mascota-main-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.mascota-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.mascota-chip {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background-color: rgba(15, 23, 42, 0.06);
+  color: #4b5563;
+}
+
+.mascota-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.mascota-notes {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+/* ======== TOQUE PET: LISTA DE MASCOTAS ======== */
+
+/* Línea principal con nombre + chip ya la teníamos; ahora le sumamos iconito */
+.mascota-name::before {
+  content: "🐶";
+  margin-right: 4px;
+}
+
+/* Si en algún momento usas clases para tipo, puedes diferenciarlas así:
+   (si no existen esas clases en el HTML, simplemente se ignoran) */
+.mascota-gato .mascota-name::before {
+  content: "🐱";
+}
+
+.mascota-ave .mascota-name::before {
+  content: "🦜";
+}
+
+.mascota-pez .mascota-name::before {
+  content: "🐠";
+}

@@ -1,0 +1,109 @@
+:host {
+  ion-content {
+    --padding-top: 12px;
+  }
+}
+
+.recordatorios-wrapper {
+  padding: 16px;
+}
+
+/* Barra de búsqueda + filtros */
+.filters-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.filters-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Item de recordatorio */
+.recordatorio-item ion-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.recordatorio-title-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.recordatorio-title {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Etiquetita azul al lado del título (tipo o similar) */
+.recordatorio-tag {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+}
+
+.recordatorio-main {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.recordatorio-meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.recordatorio-notes {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 3px;
+}
+
+/* ======== ESTADOS DE RECORDATORIOS (HOY / PRÓXIMO / VENCIDO / COMPLETADO) ======== */
+
+.recordatorio-status-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+/* Badge base */
+.recordatorio-status-hoy,
+.recordatorio-status-proximo,
+.recordatorio-status-vencido,
+.recordatorio-status-completado {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Hoy / Completado -> verde */
+.recordatorio-status-hoy,
+.recordatorio-status-completado {
+  background: rgba(34, 197, 94, 0.12);
+  color: #166534;
+}
+
+/* Próximo -> naranja */
+.recordatorio-status-proximo {
+  background: rgba(249, 115, 22, 0.12);
+  color: #9a3412;
+}
+
+/* Vencido -> rojo */
+.recordatorio-status-vencido {
+  background: rgba(239, 68, 68, 0.14);
+  color: #b91c1c;
+}

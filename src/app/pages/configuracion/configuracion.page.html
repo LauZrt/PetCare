@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configuración</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form #f="ngForm" (ngSubmit)="guardarConfiguracion(f)">
+    <!-- PERFIL DE USUARIO -->
+    <h2>Perfil del usuario</h2>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre completo</ion-label>
+        <ion-input
+          type="text"
+          name="nombre"
+          [(ngModel)]="configuracion.nombre"
+          (ngModelChange)="onConfigChange()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Correo electrónico</ion-label>
+        <ion-input
+          type="email"
+          name="correo"
+          [(ngModel)]="configuracion.correo"
+          (ngModelChange)="onConfigChange()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Teléfono</ion-label>
+        <ion-input
+          type="tel"
+          name="telefono"
+          [(ngModel)]="configuracion.telefono"
+          (ngModelChange)="onConfigChange()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Ciudad</ion-label>
+        <ion-input
+          type="text"
+          name="ciudad"
+          [(ngModel)]="configuracion.ciudad"
+          (ngModelChange)="onConfigChange()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Idioma</ion-label>
+        <ion-select
+          name="idioma"
+          [(ngModel)]="configuracion.idioma"
+          (ngModelChange)="onConfigChange()">
+          <ion-select-option value="es">Español</ion-select-option>
+          <ion-select-option value="en">Inglés</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Foto de perfil</ion-label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+      </ion-item>
+
+      <ion-item *ngIf="configuracion.fotoPerfil">
+        <ion-label position="stacked">Vista previa</ion-label>
+      </ion-item>
+      <img
+        *ngIf="configuracion.fotoPerfil"
+        [src]="configuracion.fotoPerfil"
+        style="max-width: 150px; border-radius: 50%; margin: 8px 0;" />
+    </ion-list>
+
+    <!-- PREFERENCIAS DE RECORDATORIOS -->
+    <h2>Preferencias de recordatorios</h2>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Hora por defecto</ion-label>
+        <ion-input
+          type="time"
+          name="horaRecordatoriosPorDefecto"
+          [(ngModel)]="configuracion.horaRecordatoriosPorDefecto"
+          (ngModelChange)="onConfigChange()">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Notificaciones activadas</ion-label>
+        <ion-toggle
+          name="notificacionesActivadas"
+          [(ngModel)]="configuracion.notificacionesActivadas"
+          (ngModelChange)="onConfigChange()">
+        </ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Tipo de notificación</ion-label>
+        <ion-select
+          name="tipoNotificacion"
+          [(ngModel)]="configuracion.tipoNotificacion"
+          (ngModelChange)="onConfigChange()">
+          <ion-select-option value="sonido">Con sonido</ion-select-option>
+          <ion-select-option value="silencio">Silenciosas</ion-select-option>
+          <ion-select-option value="solo_visual">Solo visual</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Respaldo automático</ion-label>
+        <ion-select
+          name="respaldoFrecuencia"
+          [(ngModel)]="configuracion.respaldoFrecuencia"
+          (ngModelChange)="onConfigChange()">
+          <ion-select-option value="nunca">Nunca</ion-select-option>
+          <ion-select-option value="diario">Diario</ion-select-option>
+          <ion-select-option value="semanal">Semanal</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <!-- PERSONALIZACIÓN -->
+    <h2>Personalización</h2>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Tema</ion-label>
+        <ion-select
+          name="tema"
+          [(ngModel)]="configuracion.tema"
+          (ngModelChange)="onConfigChange()">
+          <ion-select-option value="claro">Claro</ion-select-option>
+          <ion-select-option value="oscuro">Oscuro</ion-select-option>
+          <ion-select-option value="automatico">Automático</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Tamaño de fuente</ion-label>
+        <ion-select
+          name="tamanoFuente"
+          [(ngModel)]="configuracion.tamanoFuente"
+          (ngModelChange)="onConfigChange()">
+          <ion-select-option value="pequena">Pequeña</ion-select-option>
+          <ion-select-option value="normal">Normal</ion-select-option>
+          <ion-select-option value="grande">Grande</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mostrar emojis en nombres de mascotas</ion-label>
+        <ion-toggle
+          name="mostrarEmojisMascotas"
+          [(ngModel)]="configuracion.mostrarEmojisMascotas"
+          (ngModelChange)="onConfigChange()">
+        </ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      type="submit">
+      Guardar configuración
+    </ion-button>
+  </form>
+
+</ion-content>

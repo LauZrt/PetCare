@@ -1,0 +1,45 @@
+:host {
+  ion-content {
+    --padding-top: 12px;
+  }
+}
+
+.config-wrapper {
+  padding: 16px;
+}
+
+/* Card del perfil */
+.config-card {
+  margin-bottom: 16px;
+}
+
+.config-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.config-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+}
+
+.config-user-text {
+  font-size: 0.9rem;
+}
+
+/* Inputs del formulario */
+.config-card ion-item {
+  --background: transparent;
+  box-shadow: none;
+  margin-bottom: 4px;
+}
+
+/* Preferencias de recordatorios */
+.pref-card {
+  margin-top: 8px;
+}

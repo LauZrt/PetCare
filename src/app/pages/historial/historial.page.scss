@@ -1,0 +1,46 @@
+:host {
+  ion-content {
+    --padding-top: 12px;
+  }
+}
+
+.historial-wrapper {
+  padding: 16px;
+}
+
+.historial-form-card {
+  margin-bottom: 16px;
+}
+
+.historial-form-card ion-item {
+  --background: transparent;
+  box-shadow: none;
+  margin-bottom: 4px;
+}
+
+/* Lista de registros guardados */
+.historial-list-title {
+  margin-top: 6px;
+}
+
+.historial-list ion-item {
+  --min-height: 64px;
+}
+
+.historial-main-line {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.historial-meta-line {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.historial-notes {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}

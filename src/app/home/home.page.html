@@ -1,20 +1,72 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>PetCare</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- DASHBOARD / RESUMEN -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumen de hoy</ion-card-title>
+      <ion-card-subtitle>{{ fechaActualTexto }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>
+        Mascotas registradas:
+        <strong>{{ totalMascotas }}</strong>
+      </p>
+
+      <p>
+        Recordatorios para hoy:
+        <strong>{{ totalRecordatoriosHoy }}</strong>
+      </p>
+
+      <p>
+        Recordatorios vencidos (pendientes):
+        <strong>{{ totalRecordatoriosVencidos }}</strong>
+      </p>
+
+      <div *ngIf="proximoRecordatorio; else sinPendientes">
+        <p style="margin-top: 12px;">
+          Próximo recordatorio:
+          <br />
+          <strong>{{ proximoRecordatorio.titulo }}</strong>
+          <br />
+          {{ obtenerNombreMascota(proximoRecordatorio.mascotaId) || 'Sin mascota asociada' }}
+          • {{ proximoRecordatorio.fecha }} {{ proximoRecordatorio.hora }}
+        </p>
+      </div>
+
+      <ng-template #sinPendientes>
+        <p style="margin-top: 12px;">
+          No tienes recordatorios pendientes. 🎉
+        </p>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- MENÚ PRINCIPAL -->
+  <h2 style="margin-top: 24px;">¿Qué quieres hacer?</h2>
+
+  <ion-list>
+    <ion-item button routerLink="/mascotas">
+      <ion-label>Mascotas</ion-label>
+    </ion-item>
+
+    <ion-item button routerLink="/recordatorios">
+      <ion-label>Recordatorios</ion-label>
+    </ion-item>
+
+    <ion-item button routerLink="/historial">
+      <ion-label>Historial de cuidados</ion-label>
+    </ion-item>
+
+    <ion-item button routerLink="/configuracion">
+      <ion-label>Configuración</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

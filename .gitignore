@@ -68,3 +68,22 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Dependencias y carpetas pesadas
+node_modules/
+android/
+www/
+build/
+dist/
+platforms/
+
+# Archivos temporales o IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs y cachés
+npm-debug.log
+yarn-debug.log
+yarn-error.log

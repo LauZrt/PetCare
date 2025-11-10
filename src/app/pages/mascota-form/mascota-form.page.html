@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ esEdicion ? 'Editar mascota' : 'Nueva mascota' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form #f="ngForm" (ngSubmit)="guardarMascota(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre *</ion-label>
+        <ion-input
+          type="text"
+          name="nombre"
+          required
+          [(ngModel)]="mascota.nombre">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Especie *</ion-label>
+        <ion-input
+          type="text"
+          name="especie"
+          required
+          [(ngModel)]="mascota.especie">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Raza *</ion-label>
+        <ion-input
+          type="text"
+          name="raza"
+          required
+          [(ngModel)]="mascota.raza">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">
+          Fecha de nacimiento / adopción *
+        </ion-label>
+        <ion-input
+          type="date"
+          name="fechaNacimiento"
+          required
+          [(ngModel)]="mascota.fechaNacimiento">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Observaciones</ion-label>
+        <ion-textarea
+          name="observaciones"
+          [(ngModel)]="mascota.observaciones">
+        </ion-textarea>
+      </ion-item>
+
+      <!-- Subir foto -->
+      <ion-item>
+        <ion-label position="stacked">Foto</ion-label>
+        <input
+          type="file"
+          accept="image/*"
+          (change)="onFileSelected($event)" />
+      </ion-item>
+
+      <!-- Vista previa de la foto -->
+      <ion-item *ngIf="mascota.foto">
+        <ion-label position="stacked">Vista previa</ion-label>
+      </ion-item>
+      <img
+        *ngIf="mascota.foto"
+        [src]="mascota.foto"
+        style="max-width: 100%; border-radius: 8px; margin: 8px 0;" />
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="f.invalid">
+      {{ esEdicion ? 'Guardar cambios' : 'Guardar mascota' }}
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      color="medium"
+      routerLink="/mascotas"
+      type="button">
+      Cancelar
+    </ion-button>
+  </form>
+</ion-content>

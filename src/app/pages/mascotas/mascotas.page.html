@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mascotas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" routerLink="/mascota-form">
+    Agregar mascota
+  </ion-button>
+
+  <ion-list *ngIf="mascotas.length > 0; else sinMascotas">
+    <ion-item *ngFor="let mascota of mascotas">
+      <ion-label>
+        <h2>{{ mascota.nombre }}</h2>
+        <p>{{ mascota.especie }} - {{ mascota.raza }}</p>
+      </ion-label>
+
+      <ion-button
+        slot="end"
+        fill="outline"
+        color="primary"
+        [routerLink]="['/mascota-form', mascota.id]">
+        Editar
+      </ion-button>
+
+      <ion-button
+        slot="end"
+        color="danger"
+        fill="outline"
+        (click)="eliminarMascota(mascota.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinMascotas>
+    <p>No tienes mascotas registradas todavía.</p>
+  </ng-template>
+</ion-content>

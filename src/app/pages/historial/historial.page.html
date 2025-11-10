@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial de cuidados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <h2>Nuevo registro</h2>
+
+  <form #f="ngForm" (ngSubmit)="guardarEntrada(f)">
+    <ion-list>
+
+      <!-- Mascota asociada -->
+      <ion-item>
+        <ion-label position="stacked">Mascota</ion-label>
+        <ion-select
+          name="mascotaId"
+          [(ngModel)]="nuevaEntrada.mascotaId">
+          <ion-select-option
+            *ngFor="let m of mascotas"
+            [value]="m.id">
+            {{ m.nombre }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Título *</ion-label>
+        <ion-input
+          type="text"
+          name="titulo"
+          required
+          [(ngModel)]="nuevaEntrada.titulo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Tipo *</ion-label>
+        <ion-input
+          type="text"
+          name="tipo"
+          required
+          placeholder="Vacuna, Baño, Consulta..."
+          [(ngModel)]="nuevaEntrada.tipo">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha *</ion-label>
+        <ion-input
+          type="date"
+          name="fecha"
+          required
+          [(ngModel)]="nuevaEntrada.fecha">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Hora *</ion-label>
+        <ion-input
+          type="time"
+          name="hora"
+          required
+          [(ngModel)]="nuevaEntrada.hora">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Notas</ion-label>
+        <ion-textarea
+          name="notas"
+          [(ngModel)]="nuevaEntrada.notas">
+        </ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="f.invalid">
+      Guardar en historial
+    </ion-button>
+  </form>
+
+  <div style="margin: 16px 0; border-bottom: 1px solid #ccc;"></div>
+
+  <h2>Registros guardados</h2>
+
+  <!-- Filtro por mascota -->
+  <ion-item>
+    <ion-label position="stacked">Filtrar por mascota</ion-label>
+    <ion-select
+      [(ngModel)]="filtroMascotaId"
+      name="filtroMascotaId">
+      <ion-select-option [value]="null">Todas</ion-select-option>
+      <ion-select-option
+        *ngFor="let m of mascotas"
+        [value]="m.id">
+        {{ m.nombre }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list *ngIf="historialFiltrado.length > 0; else sinHistorial">
+    <ion-item *ngFor="let h of historialFiltrado">
+      <ion-label>
+        <h2>{{ h.titulo }}</h2>
+        <p>
+          {{ obtenerNombreMascota(h.mascotaId) || 'Sin mascota asociada' }}
+          • {{ h.tipo }} • {{ h.fecha }} {{ h.hora }}
+        </p>
+        <p *ngIf="h.notas">
+          {{ h.notas }}
+        </p>
+      </ion-label>
+
+      <ion-button
+        slot="end"
+        color="danger"
+        fill="outline"
+        (click)="eliminarEntrada(h.id)">
+        Eliminar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinHistorial>
+    <p>No tienes registros en el historial todavía.</p>
+  </ng-template>
+
+</ion-content>

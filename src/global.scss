@@ -1,37 +1,269 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-/* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
-/* Optional CSS utils that can be commented out */
+/* Utilidades de Ionic */
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Fuente general y fondo */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: radial-gradient(circle at top, #e0f2fe 0, #f8fafc 45%, #e5e7eb 100%);
+}
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* App container */
+ion-app {
+  background: transparent;
+}
+
+/* Toolbars (header superior) */
+ion-header ion-toolbar {
+  --background: #0f172a;
+  --border-color: transparent;
+  --color: #ffffff;
+}
+
+ion-title {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* Contenido general */
+ion-content {
+  --background: transparent;
+}
+
+/* Espaciado estándar dentro del contenido */
+.page-padding {
+  padding: 16px;
+}
+
+/* Cards “neumórficas” */
+ion-card {
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+  border: none;
+  overflow: hidden;
+}
+
+ion-card-header {
+  padding-bottom: 4px;
+}
+
+ion-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+ion-card-subtitle {
+  font-size: 0.85rem;
+  text-transform: none;
+  color: #64748b;
+}
+
+/* Títulos de sección dentro de las páginas */
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 16px 0 8px;
+}
+
+/* Listas como “tarjetas” */
+ion-list {
+  background: transparent !important;
+  padding: 0 0 8px 0;
+}
+
+ion-item {
+  --background: #ffffff;
+  --border-radius: 14px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --min-height: 56px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+ion-item:last-child {
+  margin-bottom: 2px;
+}
+
+/* Textos dentro de los items */
+ion-item ion-label h2,
+ion-item ion-label .item-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+ion-item ion-label p,
+ion-item ion-label .item-subtitle {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 1px 0;
+}
+
+/* Botones principales (azul PetCare) */
+ion-button {
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+}
+
+ion-button.btn-primary {
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
+  --background-hover: var(--ion-color-primary-tint);
+  --color: #ffffff;
+}
+
+/* Botones pequeños de acción (como ELIMINAR, MARCAR COMPLETADO) */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-green {
+  background: rgba(34, 197, 94, 0.12);
+  color: #166534;
+}
+
+.badge-orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #9a3412;
+}
+
+.badge-red {
+  background: rgba(239, 68, 68, 0.14);
+  color: #b91c1c;
+}
+
+/* Searchbar global (recordatorios) */
+ion-searchbar {
+  --background: #ffffff;
+  --border-radius: 999px;
+  --box-shadow: 0 6px 15px rgba(15, 23, 42, 0.1);
+  margin-bottom: 12px;
+}
+
+/* Chips de filtros (HOY / PRÓXIMOS / VENCIDOS) */
+ion-chip {
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  --background: #e5e7eb;
+  --color: #111827;
+}
+
+ion-chip.chip-active {
+  --background: rgba(37, 99, 235, 0.12);
+  --color: #1d4ed8;
+}
+
+/* Estado del recordatorio (Hoy, Vencido, Completado) */
+.status-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-today {
+  color: #1d4ed8;
+}
+
+.status-due {
+  color: #b91c1c;
+}
+
+.status-done {
+  color: #166534;
+}
+
+/* Imagen de usuario / mascota redondeada */
+.rounded-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.3);
+}
+
+/* Pequeñas etiquetas para títulos encima de cards */
+.subheading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+/* Pequeñas animaciones suaves */
+.card-soft-enter {
+  animation: cardSoftEnter 0.25s ease-out;
+}
+
+@keyframes cardSoftEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======== TOQUE PET: FONDO CON HUELLITAS SUAVES ========= */
+
+ion-content::before,
+ion-content::after {
+  content: "🐾";
+  position: fixed;
+  z-index: -1;
+  font-size: 220px;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+/* Huella arriba a la izquierda */
+ion-content::before {
+  top: -40px;
+  left: -10px;
+}
+
+/* Huella abajo a la derecha */
+ion-content::after {
+  bottom: -60px;
+  right: -20px;
+}
+
+/* Títulos de sección con iconito de pata */
+.section-title::before {
+  content: "🐾";
+  margin-right: 4px;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+
