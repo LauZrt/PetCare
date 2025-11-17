@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding" *ngIf="configuracion">
+<ion-content class="ion-padding">
 
-  <form #f="ngForm" (ngSubmit)="guardarConfiguracion(f)">
+  <form *ngIf="configuracion" #f="ngForm" (ngSubmit)="guardarConfiguracion(f)">
     <!-- PERFIL DE USUARIO -->
     <div class="titulo-seccion">
       <h2>Perfil del usuario</h2>
