@@ -10,8 +10,10 @@ import {
   IonInput,
   IonButton,
   IonToggle,
-}from '@ionic/angular/standalone';
-import { IonSelect, IonSelectOption } from '@ionic/angular';
+  IonSelect,
+  IonSelectOption
+} from '@ionic/angular/standalone';
+
 import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 
