@@ -9,9 +9,10 @@ import {
   IonLabel,
   IonInput,
   IonButton,
+  IonSelect,
+  IonSelectOption,
   IonToggle,
 }from '@ionic/angular/standalone';
-import { IonSelect, IonSelectOption } from '@ionic/angular';
 import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 
