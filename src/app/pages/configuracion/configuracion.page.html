@@ -8,7 +8,9 @@
 
   <form #f="ngForm" (ngSubmit)="guardarConfiguracion(f)">
     <!-- PERFIL DE USUARIO -->
-    <h2>Perfil del usuario</h2>
+    <div class="titulo-seccion">
+      <h2>Perfil del usuario</h2>
+    </div>
 
     <ion-list>
       <ion-item>
@@ -64,20 +66,22 @@
 
       <ion-item>
         <ion-label position="stacked">Foto de perfil</ion-label>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
       </ion-item>
-      <input type="file" accept="image/*" (change)="onFileSelected($event)" />
 
       <ion-item *ngIf="configuracion.fotoPerfil">
         <ion-label position="stacked">Vista previa</ion-label>
-      </ion-item>
-      <img
+        <img
         *ngIf="configuracion.fotoPerfil"
         [src]="configuracion.fotoPerfil"
         style="max-width: 150px; border-radius: 50%; margin: 8px 0;" />
+      </ion-item>
     </ion-list>
 
     <!-- PREFERENCIAS DE RECORDATORIOS -->
-    <h2>Preferencias de recordatorios</h2>
+    <div class="titulo-seccion">
+      <h2>Preferencias de recordatorios</h2>
+    </div>
 
     <ion-list>
       <ion-item>
@@ -125,7 +129,9 @@
     </ion-list>
 
     <!-- PERSONALIZACIÓN -->
-    <h2>Personalización</h2>
+    <div class="titulo-seccion">
+      <h2>Personalización</h2>
+    </div>
 
     <ion-list>
       <ion-item>
