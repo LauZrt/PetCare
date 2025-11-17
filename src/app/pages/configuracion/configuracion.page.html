@@ -18,7 +18,7 @@
         <ion-input
           type="text"
           name="nombre"
-          [(ngModel)]="configuracion.nombre"
+          [(ngModel)]="configuracion?.nombre"
           (ngModelChange)="onConfigChange()">
         </ion-input>
       </ion-item>
@@ -28,7 +28,7 @@
         <ion-input
           type="email"
           name="correo"
-          [(ngModel)]="configuracion.correo"
+          [(ngModel)]="configuracion?.correo"
           (ngModelChange)="onConfigChange()">
         </ion-input>
       </ion-item>
@@ -38,7 +38,7 @@
         <ion-input
           type="tel"
           name="telefono"
-          [(ngModel)]="configuracion.telefono"
+          [(ngModel)]="configuracion?.telefono"
           (ngModelChange)="onConfigChange()">
         </ion-input>
       </ion-item>
@@ -48,7 +48,7 @@
         <ion-input
           type="text"
           name="ciudad"
-          [(ngModel)]="configuracion.ciudad"
+          [(ngModel)]="configuracion?.ciudad"
           (ngModelChange)="onConfigChange()">
         </ion-input>
       </ion-item>
@@ -57,7 +57,7 @@
         <ion-label position="stacked">Idioma</ion-label>
         <ion-select
           name="idioma"
-          [(ngModel)]="configuracion.idioma"
+          [(ngModel)]="configuracion?.idioma"
           (ngModelChange)="onConfigChange()">
           <ion-select-option value="es">Español</ion-select-option>
           <ion-select-option value="en">Inglés</ion-select-option>
@@ -89,7 +89,7 @@
         <ion-input
           type="time"
           name="horaRecordatoriosPorDefecto"
-          [(ngModel)]="configuracion.horaRecordatoriosPorDefecto"
+          [(ngModel)]="configuracion?.horaRecordatoriosPorDefecto"
           (ngModelChange)="onConfigChange()">
         </ion-input>
       </ion-item>
@@ -98,7 +98,7 @@
         <ion-label>Notificaciones activadas</ion-label>
         <ion-toggle
           name="notificacionesActivadas"
-          [(ngModel)]="configuracion.notificacionesActivadas"
+          [(ngModel)]="configuracion?.notificacionesActivadas"
           (ngModelChange)="onConfigChange()">
         </ion-toggle>
       </ion-item>
@@ -107,7 +107,7 @@
         <ion-label position="stacked">Tipo de notificación</ion-label>
         <ion-select
           name="tipoNotificacion"
-          [(ngModel)]="configuracion.tipoNotificacion"
+          [(ngModel)]="configuracion?.tipoNotificacion"
           (ngModelChange)="onConfigChange()">
           <ion-select-option value="sonido">Con sonido</ion-select-option>
           <ion-select-option value="silencio">Silenciosas</ion-select-option>
@@ -119,7 +119,7 @@
         <ion-label position="stacked">Respaldo automático</ion-label>
         <ion-select
           name="respaldoFrecuencia"
-          [(ngModel)]="configuracion.respaldoFrecuencia"
+          [(ngModel)]="configuracion?.respaldoFrecuencia"
           (ngModelChange)="onConfigChange()">
           <ion-select-option value="nunca">Nunca</ion-select-option>
           <ion-select-option value="diario">Diario</ion-select-option>
@@ -138,7 +138,7 @@
         <ion-label position="stacked">Tema</ion-label>
         <ion-select
           name="tema"
-          [(ngModel)]="configuracion.tema"
+          [(ngModel)]="configuracion?.tema"
           (ngModelChange)="onConfigChange()">
           <ion-select-option value="claro">Claro</ion-select-option>
           <ion-select-option value="oscuro">Oscuro</ion-select-option>
@@ -150,7 +150,7 @@
         <ion-label position="stacked">Tamaño de fuente</ion-label>
         <ion-select
           name="tamanoFuente"
-          [(ngModel)]="configuracion.tamanoFuente"
+          [(ngModel)]="configuracion?.tamanoFuente"
           (ngModelChange)="onConfigChange()">
           <ion-select-option value="pequena">Pequeña</ion-select-option>
           <ion-select-option value="normal">Normal</ion-select-option>
@@ -162,7 +162,7 @@
         <ion-label>Mostrar emojis en nombres de mascotas</ion-label>
         <ion-toggle
           name="mostrarEmojisMascotas"
-          [(ngModel)]="configuracion.mostrarEmojisMascotas"
+          [(ngModel)]="configuracion?.mostrarEmojisMascotas"
           (ngModelChange)="onConfigChange()">
         </ion-toggle>
       </ion-item>
