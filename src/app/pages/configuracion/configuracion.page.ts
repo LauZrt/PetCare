@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -12,7 +12,7 @@ import {
   IonSelect,
   IonSelectOption,
   IonToggle,
-} from '@ionic/angular/standalone';
+}from '@ionic/angular/standalone';
 import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 
@@ -24,6 +24,7 @@ import { Configuracion } from '../../models/configuracion.model';
   templateUrl: './configuracion.page.html',
   styleUrls: ['./configuracion.page.scss'],
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
   imports: [
     IonContent,
     IonHeader,
