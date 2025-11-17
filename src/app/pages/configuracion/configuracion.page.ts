@@ -44,12 +44,31 @@ import { Configuracion } from '../../models/configuracion.model';
   ],
 })
 export class ConfiguracionPage implements OnInit {
-  configuracion!: Configuracion;
+  configuracion: Configuracion = {
+    nombre: '',
+    correo: '',
+    telefono: '',
+    ciudad: '',
+    idioma: 'es',
+    fotoPerfil: '',
+
+    horaRecordatoriosPorDefecto: '',
+    notificacionesActivadas: true,
+    tipoNotificacion: 'sonido',
+    respaldoFrecuencia: 'nunca',
+
+    tema: 'claro',
+    tamanoFuente: 'normal',
+    mostrarEmojisMascotas: true
+  };
 
   constructor(private configuracionService: ConfiguracionService) {}
 
   async ngOnInit() {
-    this.configuracion = await this.configuracionService.getConfiguracion();
+    const cfg = await this.configuracionService.getConfiguracion();
+    if (cfg) {
+      this.configuracion = cfg;
+    }
   }
 
   // Se llama al hacer submit del formulario
