@@ -64,8 +64,8 @@
 
       <ion-item>
         <ion-label position="stacked">Foto de perfil</ion-label>
-        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
       </ion-item>
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" />
 
       <ion-item *ngIf="configuracion.fotoPerfil">
         <ion-label position="stacked">Vista previa</ion-label>
