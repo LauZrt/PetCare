@@ -22,6 +22,9 @@ import { RecordatoriosService } from '../services/recordatorios.service';
 import { Mascota } from '../models/mascota.model';
 import { Recordatorio } from '../models/recordatorio.model';
 
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -57,7 +60,9 @@ export class HomePage {
 
   constructor(
     private mascotasService: MascotasService,
-    private recordatoriosService: RecordatoriosService
+    private recordatoriosService: RecordatoriosService,
+    private router: Router,
+    private navCtrl: NavController
   ) {}
 
   async ionViewWillEnter() {
@@ -134,5 +139,9 @@ export class HomePage {
     }
     const mascota = this.mascotas.find(m => m.id === mascotaId);
     return mascota ? mascota.nombre : '';
+  }
+
+  irAConfiguracion() {
+    this.router.navigateByUrl('/configuracion', { replaceUrl: true });
   }
 }
